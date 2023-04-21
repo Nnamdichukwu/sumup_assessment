@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
-      DBT_CLOUD_ACCOUNT_ID: 241786
+      DBT_CLOUD_ACCOUNT_ID: 164360
       JOB_ID: 279499
       PULL_REQUEST_ID: ${{ github.event.number }}
       GIT_SHA: ${{ github.event.pull_request.head.sha }}
