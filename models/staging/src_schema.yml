@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: sumup
+    description: This is a source connector to bigquery
+    schema: sumup_raw
+    tables:
+      - name: transaction
+        description: This is a fact table that keeps track of all products bought using sumup provided devices
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+          filter: date_diff(created_at, current_timestamp, day)>2
+        loaded_at_field: created_at
+       
+      - name: device
+        description: This a dim table that keeps track of all devices provided to customers
+        
+      - name: store
+        description: This table keeps track of all the stores that use a sumup device 
+    #making the assumption that we expect at least one store to signup to use our device every 24 hours
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+          filter: date_diff( created_at, current_timestamp, day)>2
+        loaded_at_field: created_at
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
