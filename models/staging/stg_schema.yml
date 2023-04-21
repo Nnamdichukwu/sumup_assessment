@@ -1,0 +1,52 @@
+version: 2
+
+models:
+      - name: stg_transaction
+        description: This is a fact table that keeps track of all products bought using sumup provided devices
+        columns:
+          - name: id
+            description: This is a unique key for all transactions
+            tests:
+              - unique
+              - not_null
+          - name: product_name
+            description: This is the name of the product a customer is paying for
+            tests:
+              - not_null
+          - name: product_sku
+            description: This is the stock keeping unit
+            tests:
+              - not_null
+              - unique
+            
+      - name: stg_device
+        description: This a dim table that keeps track of all devices provided to customers
+        columns:
+          - name: id 
+            description: This is the device id
+            tests:
+              - unique
+              - not_null
+          - name: type
+            description: This refers to the type of device provided to customers(1-5)
+            tests:
+              - not_null
+              - dbt_expectations.expect_column_values_to_be_between:
+                  min_value: 1
+                  max_value: 5
+                  row_condition: "id is not null"
+          - name: store_id
+            description: This is the id of the store the device belongs to. 
+            tests:
+              - not_null
+      - name: stg_store
+        description: This table keeps track of all the stores that use a sumup device 
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+          - name: name
+            tests:
+              - unique
+              - not_null
