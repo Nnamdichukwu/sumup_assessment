@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
-      DBT_CLOUD_ACCOUNT_ID: 164360
-      JOB_ID: 279499
+      DBT_CLOUD_ACCOUNT_ID: ${{ secrets.DBT_DBT_CLOUD_ACCOUNT_ID }}
+      JOB_ID: ${{ secrets.DBT_DBT_CLOUD_JOB_ID }}
       PULL_REQUEST_ID: ${{ github.event.number }}
       GIT_SHA: ${{ github.event.pull_request.head.sha }}
 
@@ -32,5 +32,5 @@ jobs:
       
           run=$(dbtc trigger-autoscaling-ci-job \
             --job-id=$JOB_ID \
-            --payload='{"cause": "DBT Slim CI!","git_sha":"'"$GIT_SHA"'","schema_override":"'"dbt_cicd"'","github_pull_request_id":'"$PULL_REQUEST_ID"'}' \
+            --payload='{"cause": "DBT Slim CI!","git_sha":"'"$GIT_SHA"'","schema_override":"'""dbt_cicd""'","github_pull_request_id":'"$PULL_REQUEST_ID"'}' \
             --no-should-poll)
