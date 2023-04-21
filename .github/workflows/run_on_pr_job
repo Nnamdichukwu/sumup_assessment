@@ -1,4 +1,4 @@
-name:  Dbt Cloud CI
+name: DBT Cloud CI
 on:
   pull_request:
     branches:
@@ -25,13 +25,12 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "3.9.x"
-  #this uses
+
       - name: Trigger DBT CI Job
         run: |
           pip install dbtc==0.3.3
           SO="dbt_cloud_pr_"$JOB_ID"_"$PULL_REQUEST_ID
           run=$(dbtc trigger-autoscaling-ci-job \
             --job-id=$JOB_ID \
-            --payload='{"cause": "DBT Slim CI!","git_sha":"'"$GIT_SHA"'","schema_override":"'""dbt_cloud_cicd""'"}' \ 
-            
+            --payload='{"cause": "DBT Slim CI!","git_sha":"'"$GIT_SHA"'","schema_override":"'"$SO"'","github_pull_request_id":'"$PULL_REQUEST_ID"'}' \
             --no-should-poll)
