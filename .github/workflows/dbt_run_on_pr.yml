@@ -16,7 +16,7 @@ jobs:
     env:
       DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
       DBT_CLOUD_ACCOUNT_ID: ${{ secrets.DBT_DBT_CLOUD_ACCOUNT_ID }}
-      JOB_ID: ${{ secrets.DBT_DBT_CLOUD_JOB_ID }}
+      JOB_ID: ${{ secrets.DBT_CLOUD_JOB_ID }}
       PULL_REQUEST_ID: ${{ github.event.number }}
       GIT_SHA: ${{ github.event.pull_request.head.sha }}
 
