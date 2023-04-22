@@ -3,11 +3,11 @@ with source as (
 ),
 renamed as (
     select
-        id,
+        id as transaction_id,
         device_id,
         product_name,
         product_sku,
-        product_name_4,
+        product_name_4 as product_category,
         amount,
         status,
         card_number,
