@@ -3,8 +3,8 @@ with source as (
 ),
 renamed as (
     select
-        id,
-        name,
+        id as store_id,
+        name as store_name,
         address,
         city,
         country,
