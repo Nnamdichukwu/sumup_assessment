@@ -13,7 +13,6 @@ with
 
  stores_and_devices AS (
     select  
-       {{ dbt_utils.generate_surrogate_key(['stores.store_id', 'devices.device_id']) }} as stores_and_devices_sk,
         stores.store_id,
         stores.store_name,
         devices.device_id,
