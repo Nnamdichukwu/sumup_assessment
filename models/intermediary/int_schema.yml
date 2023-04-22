@@ -5,7 +5,7 @@ models:
     description: This dim table combines the store and devices models
     columns:
       - name: store_id
-        description: This is the id of the store
+        description: This is the id of the store, it only includes stores that have done a transaction 
         tests:
           - not_null
           - unique

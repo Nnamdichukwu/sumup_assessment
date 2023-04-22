@@ -31,3 +31,6 @@ models:
     intermediary:
       materialized: table
       +schema: intermediary
+    summary:
+      materialized: table
+      +schema: summary
