@@ -34,3 +34,6 @@ models:
     summary:
       materialized: table
       +schema: summary
+    reports:
+      materialized: table
+      +schema: reporting

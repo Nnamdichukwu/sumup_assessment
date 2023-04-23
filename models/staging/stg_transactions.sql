@@ -3,8 +3,8 @@ with source as (
 ),
 renamed as (
     select
-        id as transaction_id,
-        device_id,
+        cast(id as string) as transaction_id,
+        cast(device_id as string) as device_id,
         product_name,
         product_sku,
         product_name_4 as product_category,

@@ -10,7 +10,11 @@ with
             transactions 
         inner join 
             devices on transactions.device_id = devices.device_id
-        group  by 1
+        group  by rollup(devices.device_type)
         
     )
-    select * from device_transactions
+    select 
+        case when device_type is null then 'Total' else device_type end  as device_types,
+        transaction_amount,
+        transaction_count
+     from device_transactions
