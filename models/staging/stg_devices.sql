@@ -3,7 +3,7 @@ with source as (
 ),
 renamed as (
     select
-        id as device_id,
+        cast(id as string) as device_id,
         cast(type as string) as device_type,
         store_id
 
