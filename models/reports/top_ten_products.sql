@@ -3,11 +3,11 @@ with
     top_product_sales as (
         select 
           product_name,
-          transaction_amount
+         number_of_products_sold
 
         from 
             products
-        order by transaction_amount desc 
+        order by number_of_products_sold desc 
         limit 10
     )
     select * from top_product_sales
