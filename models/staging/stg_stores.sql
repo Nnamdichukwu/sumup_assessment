@@ -3,7 +3,7 @@ with source as (
 ),
 renamed as (
     select
-        id as store_id,
+        cast(id as string) as store_id,
         name as store_name,
         address,
         city,

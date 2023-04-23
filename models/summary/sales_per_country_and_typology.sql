@@ -6,10 +6,22 @@ with
             stores.country,
             stores.typology, 
             count(*) as number_of_sales,
-            sum(transactions.amount) as transaction_amount
+            avg(transactions.amount) as avg_transaction_amount
         from  
             transactions
         inner join stores on transactions.store_id = stores.store_id
-        group by rollup (stores.country, stores.typology)    
+        group by rollup (stores.country, stores.typology)  
+    --bigquery doesnt have cube or grouping sets syntax  
+        UNION ALL 
+         select 
+            null as country,
+            stores.typology, 
+            count(*) as number_of_sales,
+            avg(transactions.amount) as avg_transaction_amount
+        from  
+            transactions
+        inner join stores on transactions.store_id = stores.store_id
+        group by stores.typology  
+
     )
     select * from store_sales

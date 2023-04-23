@@ -4,7 +4,7 @@ with source as (
 renamed as (
     select
         id as device_id,
-        type as device_type,
+        cast(type as string) as device_type,
         store_id
 
     from source
