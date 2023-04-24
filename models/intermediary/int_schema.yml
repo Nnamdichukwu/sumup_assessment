@@ -1,23 +1,53 @@
 version: 2
 
 models:
-  - name: dim_stores_devices
-    description: This dim table combines the store and devices models
+  - name: dim_stores
+    description: This dim table combines the store 
     columns:
-      - name: store_id
-        description: This is the id of the store, it only includes stores that have done a transaction 
+      - name: store_sk
+        description: This is the primary key of the dim_stores table
         tests:
           - not_null
           - unique
-      - name: device_id
+  - name: dim_devices
+    description: This dim table combines the store 
+
+    columns:
+      - name: device_sk
+        description: This is the primary key of the dim_devices table
         tests:
           - not_null
           - unique
+      - name: store_sk
+        description: This is the foreign key in this table
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_stores')
+              field: 'store_sk'
+
+           
   - name: fct_transactions
     description: Fact table that measures all transactions
+    columns: 
+      - name: transaction_sk
+        descrption: This is the primary key of this table
+        tests:
+          - not_null
+          - unique
+      - name: device_sk
+        description: This is a foreign key in this table
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_devices')
+              field: 'device_sk'
+  - name: int_transactions
+    description: This is a denormalised table of all transactions, the device info and store info
     tests:
       - assert_date_value_in_column_a_is_greater_than_column_b:
             column_a: happened_at
             column_b: first_transaction
-            or_equal: true 
-         
+            or_equal: true   
+
+
