@@ -6,6 +6,8 @@ Average transacted amount per store typology and country
 Percentage of transactions per device type
 Average time for a store to perform its 5 first transactions
 
+I used bigquery as my datawarehouse
+
 I created a CI/CD pipeline that runs the changed models and its immediate downstream on every pull request to the main branch. It uses the state:modified+1 dbt syntax to do this. I chose to output the models to a single table so as to:
  1. Avoid cluttering the datawarehouse with so many pr schemas
  2. As I didnt have a "dev" environment, I wanted to use this to mock one. 
