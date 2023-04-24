@@ -1,10 +1,10 @@
 This project is a technical assessment for SumUp Analytics Engineer Position
 The objective is to answer the following questions:
-Top 10 stores per transacted amount
-Top 10 products sold
-Average transacted amount per store typology and country
-Percentage of transactions per device type
-Average time for a store to perform its 5 first transactions
+ 1. Top 10 stores per transacted amount
+ 2. Top 10 products sold
+ 3. Average transacted amount per store typology and country
+ 4. Percentage of transactions per device type
+ 5. Average time for a store to perform its 5 first transactions
 
 I used bigquery as my datawarehouse
 
