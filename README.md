@@ -38,6 +38,6 @@ For future improvements:
 1. I'll create a proper dev schema that mirrors the prod instead of using the cicd(although it also mirrors the prod)
 2. I didnt write enough tests as I was cautious of the time allocated on this project, specifically I could have written more unit tests and tested the business logic more rigorously
 3. My ERD didnt contain every single column as I rushed through it and I just wanted to show the important bits and how each table related to each other.
-
+4. I'll create a "Run on merge" job so that when code gets merged the job can run the merged models + it's children models so they can have the updated data in prod environment 
 
 PS: For the extract and load process, I used Stitchdata to move the tables from the s3 bucket I created to the data warehouse(bigquery) as the assessment said to use sql and not python. I also wanted to focus more on the transformations 
