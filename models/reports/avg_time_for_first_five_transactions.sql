@@ -1,5 +1,5 @@
 with 
-    time_per_transaction as (select * from {{ ref('fct_transactions') }}),
+    time_per_transaction as (select * from {{ ref('int_transactions') }}),
     order_transactions as (
        select 
          store_id, 
