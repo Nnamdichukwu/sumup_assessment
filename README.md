@@ -39,5 +39,7 @@ For future improvements:
 2. I didnt write enough tests as I was cautious of the time allocated on this project, specifically I could have written more unit tests and tested the business logic more rigorously
 3. My ERD didnt contain every single column as I rushed through it and I just wanted to show the important bits and how each table related to each other.
 4. I'll create a "Run on merge" job so that when code gets merged the job can run the merged models + it's children models so they can have the updated data in prod environment 
+5. I merged directly from the feature_branches into main, ideally, there should be a dev branch that runs off the dev schema where changes should be deployed to and tested before merging to master.
+6. I didn't write any proper pull request, I was pressed for time and didn't want to spend a lot of time on this as I wanted to be done with the project asap. 
 
 PS: For the extract and load process, I used Stitchdata to move the tables from the s3 bucket I created to the data warehouse(bigquery) as the assessment said to use sql and not python. I also wanted to focus more on the transformations 
