@@ -9,14 +9,13 @@
 
 with 
  stores AS (select * from {{ ref('stg_stores') }}),
- devices AS (select * from {{ ref('stg_devices') }}),
 
- stores_and_devices AS (
+
+ stores_dim AS (
     select  
+        {{dbt_utils.generate_surrogate_key(['store_id'])}} as store_sk,
         stores.store_id,
         stores.store_name,
-        devices.device_id,
-        devices.device_type,
         stores.address,
         stores.city,
         stores.country,
@@ -25,9 +24,8 @@ with
         stores.created_at,
     from 
         stores 
-    inner join 
-        devices on stores.store_id = devices.store_id
+    
 
     
  )
- select  * from  stores_and_devices 
+ select  * from  stores_dim

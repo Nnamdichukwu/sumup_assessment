@@ -1,5 +1,5 @@
 with 
-    transactions as (select * from {{ ref('fct_transactions') }} where status = 'accepted'),
+    transactions as (select * from {{ ref('int_transactions') }} where status = 'accepted'),
     transaction_per_store as (
         select 
             store_id,

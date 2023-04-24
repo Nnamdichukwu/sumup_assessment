@@ -1,16 +1,15 @@
 with 
-    transactions as (select * from {{ ref('fct_transactions') }} where status = 'accepted'),
-    devices as (select * from {{ ref('dim_stores_devices') }}),
+    transactions as (select * from {{ ref('int_transactions') }} where status = 'accepted'),
+   
     device_transactions as (
         select 
-            devices.device_type,
+            device_type,
             sum(amount) as transaction_amount,
             count(*) as  transaction_count
         from 
             transactions 
-        inner join 
-            devices on transactions.device_id = devices.device_id
-        group  by rollup(devices.device_type)
+        
+        group  by rollup(device_type)
         
     )
     select 
